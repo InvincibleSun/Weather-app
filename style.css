@@ -12,6 +12,12 @@ html {
   color: #222;
   height: 100%;
   font-family: "Open Sans", sans-serif;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgba(91, 173, 254, 0.16) 0%,
+    rgba(91, 224, 254, 0.26) 47.2%,
+    rgba(170, 254, 235, 0.33) 90%
+  );
 }
 
 .container {
@@ -29,6 +35,7 @@ input {
   margin: 0 20px 20px 0;
   border: 2px solid #07f;
   border-radius: 4px;
+  background-color: #d7e5f3;
 }
 input:hover,
 input:focus {
@@ -66,12 +73,16 @@ main {
 }
 
 .current-weather {
-  padding: 30px 90px;
+  padding: 110px 150px;
   align-self: center;
-  border-radius: 50%;
-  border: 2px solid #07f;
-  background-color: #d7e5f3;
   margin: 30px 0px;
+  background: url(./img/img-1.png) 50%/400px 400px no-repeat;
+}
+h1 {
+  margin: 0;
+}
+.description {
+  text-transform: capitalize;
 }
 
 .item {
@@ -88,12 +99,9 @@ main {
   border: 2px solid #ec0;
   margin-bottom: 20px;
 }
-.description {
-  text-transform: capitalize;
-}
 
 i {
-  font-size: 34px;
+  font-size: 44px;
   color: #ec0;
 }
 .date {
@@ -112,6 +120,6 @@ i {
   color: inherit;
   width: 30%;
   height: 40px;
-  border: 2px solid #ec0;
+  border: 2px solid #07f;
   margin-top: 15px;
 }

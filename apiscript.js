@@ -10,12 +10,25 @@ function formatDate(date) {
   if (hours < 10) {
     hours = "0" + hours;
   }
+
   let minutes = date.getMinutes();
   if (minutes < 10) {
     minutes = "0" + minutes;
   }
 
-  return `${day} ${hours}:${minutes}`;
+  const year = date.getFullYear();
+
+  let month = date.getMonth();
+  if (month < 10) {
+    month = "0" + month;
+  }
+
+  let num = date.getDate();
+  if (num < 10) {
+    num = "0" + num;
+  }
+
+  return `${day} ${hours}:${minutes}, | ${num}.${+month + 1}.${year}`;
 }
 
 time.textContent = formatDate(now);
