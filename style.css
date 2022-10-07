@@ -123,3 +123,7 @@ i {
   border: 2px solid #07f;
   margin-top: 15px;
 }
+.git-link {
+  margin: 15px;
+  text-align: center;
+}
