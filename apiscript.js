@@ -1,5 +1,7 @@
+document.addEventListener("DOMContentLoaded", getCoords);
+
 //date
-const time = document.querySelector(".time");
+const timeElem = document.querySelector(".time");
 const now = new Date();
 
 function formatDate(date) {
@@ -28,21 +30,25 @@ function formatDate(date) {
     num = "0" + num;
   }
 
-  return `${day} ${hours}:${minutes}, | ${num}.${+month + 1}.${year}`;
+  return `${day} ${hours}:${minutes} | ${num}.${+month + 1}.${year}`;
 }
+timeElem.textContent = formatDate(now);
 
-time.textContent = formatDate(now);
-
+//forecast
 const title = document.querySelector("h1");
-const tempC = document.querySelector(".celsius");
+const temp = document.querySelector(".temp");
+const signF = document.querySelector("h2 a:last-child");
+const signC = document.querySelector(".sign-C");
 const findBtn = document.querySelector(".find-city-btn");
 const currentBtn = document.querySelector(".current-location-btn");
 const input = document.querySelector("input");
 const description = document.querySelector(".description");
-const humidity = document.querySelector(".humidity span");
-const wind = document.querySelector(".wind span");
+const humidity = document.querySelector(".humidity b");
+const wind = document.querySelector(".wind b");
 const icon = document.querySelector(".icon");
 const apiKey = "f02aa195f0929b1be058b3a6489e6ae0";
+let celsiusTemp;
+let fahrenheitTemp;
 
 findBtn.onclick = function (event) {
   event.preventDefault();
@@ -77,10 +83,30 @@ function retrieveGeolocation(position) {
 
 function displayTemp(response) {
   console.log(response);
-  tempC.innerHTML = Math.round(response.data.main.temp);
+  celsiusTemp = Math.round(response.data.main.temp);
+  fahrenheitTemp = Math.round(celsiusTemp * (9 / 5) + 32);
+  temp.textContent = celsiusTemp;
   title.textContent = response.data.name;
   description.textContent = response.data.weather[0].description;
-  humidity.textContent = response.data.main.humidity;
-  wind.textContent = Math.round(response.data.wind.speed);
-  icon.innerHTML = `<img src="http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png">`;
+  humidity.textContent = response.data.main.humidity + " %";
+  wind.textContent = Math.round(response.data.wind.speed) + " m/s";
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
 }
+
+signF.onclick = function (event) {
+  event.preventDefault();
+  temp.textContent = fahrenheitTemp;
+  signC.classList.remove("active");
+  signF.classList.add("active");
+};
+
+signC.onclick = function (event) {
+  event.preventDefault();
+  temp.textContent = celsiusTemp;
+  signF.classList.remove("active");
+  signC.classList.add("active");
+};

@@ -6,12 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Forecast</title>
     <!-- CSS only -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
-      crossorigin="anonymous"
-    />
     <link rel="stylesheet" href="./style.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
@@ -23,24 +17,25 @@
     <div class="container">
       <header>
         <form id="city">
-          <input type="text" name="city" placeholder="Find your city..." class="city-input" />
+          <input type="text" name="city" placeholder="Find your city..." class="city-input" autocomplete="off"/>
           <button type="submit" class="find-city-btn">Find!</button>
           <button type="submit" class="current-location-btn">Current location</button>
           <div class="time"></div>
         </form>
       </header>
 
-      <main class="text-center">
+      <main>
         <div class="current-weather">
           <h2>
-            <span class="celsius">17</span>
-            °C
-          </h2>
+            <span class="temp">25</span>
+            <a href="#" class="sign-C active">°C  | </a> 
+            <a href="#">°F</a>
+          </h2> 
           <h1>Paris</h1>
-          <div class="icon"><i class="fa-solid fa-sun"></i></div>
-          <p class="description">-</p>
-          <p class="humidity">Humidity: <span>67</span>%</p>
-          <p class="wind">Wind: <span>2</span>m/s</p>
+          <img src="" alt="" class="icon"></img>
+          <p class="description">Description</p>
+          <p class="humidity">Humidity: <b>67</b></p>
+          <p class="wind">Wind: <b>2</b></p>
         </div>
       </main>
 
@@ -54,7 +49,6 @@
       </footer>
     </div>
 
-    <script src="https://kit.fontawesome.com/fcd9b50605.js" crossorigin="anonymous"></script>
     <script src="./apiscript.js"></script>
   </body>
 </html>
