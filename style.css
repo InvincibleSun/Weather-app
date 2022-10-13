@@ -17,7 +17,7 @@ html {
 }
 
 .container {
-  padding: 20px;
+  padding: 30px;
   min-height: 100%;
   display: flex;
   flex-direction: column;
@@ -116,7 +116,7 @@ p {
   flex-wrap: wrap;
 }
 .forecast-item {
-  flex: 1 1 20%;
+  flex: 1 1 14%;
   align-items: center;
   justify-content: center;
   margin: 0 0px 20px;
@@ -125,15 +125,11 @@ p {
 .forecast-elem {
   cursor: pointer;
   width: 50%;
-  padding: 15px 0;
+  padding: 15px;
   border: 2px solid transparent;
 }
-.forecast-elem:hover,
-.forecast-elem:focus,
-.forecast-elem:active {
-  border-radius: 50%;
-  box-shadow: 1px 1px #d7e5f3;
-  border: 2px solid #025fc9;
+.forecast-elem:hover .forecast-day {
+  color: #025fc9;
 }
 .forecast-day {
   text-align: center;
@@ -147,6 +143,7 @@ p {
 }
 .forecast-temp-max {
   color: #025fc9;
+  margin-right: 5px;
 }
 .forecast-temp-min {
   opacity: 0.7;

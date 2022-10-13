@@ -46,7 +46,7 @@ const description = document.querySelector(".description");
 const humidity = document.querySelector(".humidity b");
 const wind = document.querySelector(".wind b");
 const icon = document.querySelector(".icon");
-const apiKey = "f02aa195f0929b1be058b3a6489e6ae0";
+const apiKey = "a33b693cfbefd271b0ed075f9a8f65f0";
 let celsiusTemp;
 let fahrenheitTemp;
 
@@ -95,6 +95,8 @@ function displayTemp(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   icon.setAttribute("alt", response.data.weather[0].description);
+
+  getForecast(response.data.coord.lat, response.data.coord.lon);
 }
 
 signF.onclick = function (event) {
@@ -110,3 +112,45 @@ signC.onclick = function (event) {
   signF.classList.remove("active");
   signC.classList.add("active");
 };
+
+function getForecast(lat, lon) {
+  axios
+    .get(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
+    )
+    .then(showForecast);
+}
+
+function showForecast(response) {
+  console.log(response.data);
+  const forecastResponse = response.data.daily;
+  const forecastElem = document.querySelector(".forecast");
+
+  let forecastHTML = `<div class="forecast-row">`;
+  forecastResponse.forEach(function (day, index) {
+    if (index < 7) {
+      forecastHTML += `
+            <div class="forecast-item">
+              <div class="forecast-elem">
+                <p class="forecast-day">${formatDay(day.dt)}</p>
+                <img src="http://openweathermap.org/img/wn/${
+                  day.weather[0].icon
+                }@2x.png" alt="icon">
+                <div class="forecast-temp"> <span class="forecast-temp-max">${Math.round(
+                  day.temp.max
+                )}°</span> <span class="forecast-temp-min">${Math.round(day.temp.min)}°</span></div>
+              </div>
+            </div>`;
+    }
+  });
+
+  forecastElem.innerHTML = forecastHTML + `</div>`;
+}
+
+function formatDay(timestamp) {
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  const date = new Date(timestamp * 1000);
+  const day = date.getDay();
+  return days[day];
+}
