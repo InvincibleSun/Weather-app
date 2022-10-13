@@ -70,10 +70,10 @@ main {
 }
 
 .current-weather {
-  padding: 115px 150px 130px;
+  padding: 105px 150px 100px;
   align-self: center;
   text-align: center;
-  margin: 30px 0px;
+  margin: 10px 0px;
   background: url(./img/img-1.png) 50%/430px 430px no-repeat;
 }
 
@@ -90,7 +90,7 @@ h2 {
 h2 a {
   align-self: flex-start;
   font-size: 22px;
-  color: #07f;
+  color: #025fc9;
   letter-spacing: 3px;
 }
 .active {
@@ -111,6 +111,46 @@ p {
   text-transform: capitalize;
 }
 
+.forecast-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.forecast-item {
+  flex: 1 1 20%;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0px 20px;
+  display: flex;
+}
+.forecast-elem {
+  cursor: pointer;
+  width: 50%;
+  padding: 15px 0;
+  border: 2px solid transparent;
+}
+.forecast-elem:hover,
+.forecast-elem:focus,
+.forecast-elem:active {
+  border-radius: 50%;
+  box-shadow: 1px 1px #d7e5f3;
+  border: 2px solid #025fc9;
+}
+.forecast-day {
+  text-align: center;
+}
+.forecast-elem > img {
+  display: block;
+  margin: 0 auto;
+}
+.forecast-temp {
+  text-align: center;
+}
+.forecast-temp-max {
+  color: #025fc9;
+}
+.forecast-temp-min {
+  opacity: 0.7;
+}
 .more-info {
   display: block;
   padding: 5px;
