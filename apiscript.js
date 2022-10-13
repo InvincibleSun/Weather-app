@@ -34,11 +34,9 @@ function formatDate(date) {
 }
 timeElem.textContent = formatDate(now);
 
-//forecast
+//current weather
 const title = document.querySelector("h1");
 const temp = document.querySelector(".temp");
-const signF = document.querySelector("h2 a:last-child");
-const signC = document.querySelector(".sign-C");
 const findBtn = document.querySelector(".find-city-btn");
 const currentBtn = document.querySelector(".current-location-btn");
 const input = document.querySelector("input");
@@ -47,8 +45,6 @@ const humidity = document.querySelector(".humidity b");
 const wind = document.querySelector(".wind b");
 const icon = document.querySelector(".icon");
 const apiKey = "a33b693cfbefd271b0ed075f9a8f65f0";
-let celsiusTemp;
-let fahrenheitTemp;
 
 findBtn.onclick = function (event) {
   event.preventDefault();
@@ -83,9 +79,7 @@ function retrieveGeolocation(position) {
 
 function displayTemp(response) {
   console.log(response);
-  celsiusTemp = Math.round(response.data.main.temp);
-  fahrenheitTemp = Math.round(celsiusTemp * (9 / 5) + 32);
-  temp.textContent = celsiusTemp;
+  temp.textContent = Math.round(response.data.main.temp);
   title.textContent = response.data.name;
   description.textContent = response.data.weather[0].description;
   humidity.textContent = response.data.main.humidity + " %";
@@ -99,20 +93,7 @@ function displayTemp(response) {
   getForecast(response.data.coord.lat, response.data.coord.lon);
 }
 
-signF.onclick = function (event) {
-  event.preventDefault();
-  temp.textContent = fahrenheitTemp;
-  signC.classList.remove("active");
-  signF.classList.add("active");
-};
-
-signC.onclick = function (event) {
-  event.preventDefault();
-  temp.textContent = celsiusTemp;
-  signF.classList.remove("active");
-  signC.classList.add("active");
-};
-
+//forecast
 function getForecast(lat, lon) {
   axios
     .get(

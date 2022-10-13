@@ -77,25 +77,12 @@ main {
   background: url(./img/img-1.png) 50%/430px 430px no-repeat;
 }
 
-.temp {
-  font-size: 34px;
-  line-height: 1.2;
-  margin-right: 3px;
-}
 h2 {
   display: flex;
   justify-content: center;
-  font-size: 19px;
-}
-h2 a {
-  align-self: flex-start;
-  font-size: 22px;
-  color: #025fc9;
-  letter-spacing: 3px;
-}
-.active {
-  color: #222;
-  cursor: auto;
+  font-size: 34px;
+  line-height: 1.2;
+  margin-right: 3px;
 }
 
 h1 {
