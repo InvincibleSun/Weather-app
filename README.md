@@ -1,2 +1,2 @@
 # Weather-app
-Test app for forecast weather
+Test app for forecast weather (Vanilla JS)
